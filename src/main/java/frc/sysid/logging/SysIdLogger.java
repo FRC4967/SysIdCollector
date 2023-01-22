@@ -190,22 +190,17 @@ public class SysIdLogger {
         // Don't let robot move if it's characterizing the wrong mechanism
         if (isWrongMechanism()) {
             m_motorVoltage = 0;
-            System.out.println("Wrong mechanism");
             return;
         }
 
         SmartDashboard.putString("m_testType", m_testType);
         if ("Quasistatic".equals(m_testType)) {
-            SmartDashboard.putNumber("m_voltageCommand", m_voltageCommand);
-            SmartDashboard.putNumber("time", (m_timestamp - m_startTime));
             m_motorVoltage = m_voltageCommand * (m_timestamp - m_startTime);
         } else if ("Dynamic".equals(m_testType)) {
             m_motorVoltage = m_voltageCommand;
         } else {
             m_motorVoltage = 0.0;
         }
-
-        SmartDashboard.putNumber("SysIdMotorVoltage", m_motorVoltage);
     }
 
     /**

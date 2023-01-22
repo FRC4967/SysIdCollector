@@ -53,12 +53,10 @@ public class DriveRobot extends TimedRobot {
       for (int i = 0; i < config.leftPorts.length; i++) {
 
         MotorConfig leftMotorConfig = config.getLeftMotorConfig(i);
-        System.out.println("leftMotorConfig inverted " + leftMotorConfig.inverted);
         MotorControllerAdapter leftMotorController = SysId.setupMotorController(leftMotorConfig);
         leftControllers.add(leftMotorController);
 
         MotorConfig rightMotorConfig = config.getRightMotorConfig(i);
-        System.out.println("rightMotorConfig inverted " + rightMotorConfig.inverted);
         MotorControllerAdapter rightMotorController = SysId.setupMotorController(rightMotorConfig);
         rightControllers.add(rightMotorController);
 

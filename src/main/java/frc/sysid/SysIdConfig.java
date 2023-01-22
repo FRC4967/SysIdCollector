@@ -132,7 +132,6 @@ public class SysIdConfig {
     }
 
     public EncoderConfig getLeftEncoderConfig() {
-        System.out.println("leftEncoderInverted" + leftEncoderInverted);
         return new EncoderConfig(encoderType, leftEncoderPorts, isEncoding, period, cpr, getGearing(), numSamples, leftEncoderInverted);
     }
 
@@ -141,7 +140,6 @@ public class SysIdConfig {
     }
 
     public EncoderConfig getRightEncoderConfig() {
-        System.out.println("rightEncoderInverted" + rightEncoderInverted);
         return new EncoderConfig(encoderType, rightEncoderPorts, isEncoding, period, cpr, getGearing(), numSamples, rightEncoderInverted);
     }
 
