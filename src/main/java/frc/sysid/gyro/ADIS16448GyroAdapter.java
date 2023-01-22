@@ -13,7 +13,15 @@ public class ADIS16448GyroAdapter implements GyroAdapter {
 
     public ADIS16448GyroAdapter(SysIdConfig config) {
         var port = SysId.getSPIPort(config.gyroConnector);
-        this.gyro = new ADIS16448_IMU(IMUAxis.kZ, port, CalibrationTime._8s);
+
+        IMUAxis axis = IMUAxis.kZ;
+        if ("X".equalsIgnoreCase(config.gyroAxis)) {
+            axis = IMUAxis.kX;
+        } else if ("Y".equalsIgnoreCase(config.gyroAxis)) {
+            axis = IMUAxis.kY;
+        }
+
+        this.gyro = new ADIS16448_IMU(axis, port, CalibrationTime._8s);
     }
 
     @Override

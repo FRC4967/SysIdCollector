@@ -83,6 +83,9 @@ public class SysIdConfig {
     @JsonProperty("gyro ctor")
     public String gyroConnector = "";
 
+    @JsonProperty("gyro axis")
+    public String gyroAxis = "Z";
+
     @JsonProperty("is drivetrain")
     public boolean isDrivetrain = true;
 

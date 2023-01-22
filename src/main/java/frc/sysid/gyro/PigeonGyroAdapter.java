@@ -15,6 +15,8 @@ public class PigeonGyroAdapter implements GyroAdapter {
 
     private final BasePigeon gyro;
 
+    private final int axisIndex;
+
     public PigeonGyroAdapter(SysIdConfig config,
             List<MotorControllerAdapter> leftControllers,
             List<MotorControllerAdapter> rightControllers) {
@@ -56,6 +58,15 @@ public class PigeonGyroAdapter implements GyroAdapter {
 
         }
 
+        if ("X".equalsIgnoreCase(config.gyroAxis)) {
+            axisIndex = 0;
+        } else if ("Y".equalsIgnoreCase(config.gyroAxis)) {
+            axisIndex = 1;
+        } else {
+            axisIndex = 2;
+        }
+
+
     }
 
     @Override
@@ -76,14 +87,14 @@ public class PigeonGyroAdapter implements GyroAdapter {
     public double getAngle() {
         double[] xyz = new double[3];
         gyro.getAccumGyro(xyz);
-        return Units.degreesToRadians(xyz[2]);
+        return Units.degreesToRadians(xyz[axisIndex]);
     }
 
     @Override
     public double getRate() {
         double[] xyz_dps = new double[3];
         gyro.getRawGyro(xyz_dps);
-        return Units.degreesToRadians(xyz_dps[2]);
+        return Units.degreesToRadians(xyz_dps[axisIndex]);
     }
 
     @Override
