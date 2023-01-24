@@ -1,5 +1,7 @@
 package frc.sysid.motor;
 
+import java.util.List;
+
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import frc.sysid.SysIdConfig.MotorConfig;
 
@@ -12,7 +14,7 @@ public abstract class WPIMotorControllerAdapter implements MotorControllerAdapte
     }
 
     @Override
-    public void configure(MotorConfig config) {
+    public void configure(MotorConfig config, List<MotorControllerAdapter> otherMotors) {
         
     }
 }

@@ -1,5 +1,7 @@
 package frc.sysid.motor;
 
+import java.util.List;
+
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import frc.sysid.SysIdConfig.MotorConfig;
 
@@ -11,7 +13,7 @@ public abstract class BaseMotorControllerAdapter implements MotorControllerAdapt
         this.controller = controller;
     }
 
-    public void configure(MotorConfig config) {
+    public void configure(MotorConfig config, List<MotorControllerAdapter> otherMotors) {
         controller.setInverted(config.inverted);
     }
     

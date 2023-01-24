@@ -1,5 +1,7 @@
 package frc.sysid.motor;
 
+import java.util.List;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -23,11 +25,17 @@ public class SparkMaxMotorControllerAdapter extends BaseMotorControllerAdapter {
 
 
     @Override
-    public void configure(MotorConfig config) {
+    public void configure(MotorConfig config, List<MotorControllerAdapter> otherMotors) {
         CANSparkMax sparkMax = (CANSparkMax) controller;
         sparkMax.restoreFactoryDefaults();
         sparkMax.setIdleMode(IdleMode.kBrake);
-        super.configure(config);
+
+        MotorControllerAdapter leader = otherMotors.get(0);
+        if (config.motorIndex > 0 && leader != null) {
+            sparkMax.follow((CANSparkMax) leader.unwrapMotorController());
+        }
+
+        super.configure(config, otherMotors);
     }
 
     @Override

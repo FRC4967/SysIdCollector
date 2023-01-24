@@ -54,8 +54,6 @@ public class SysId {
 
         }
 
-        controller.configure(motorConfig);
-
         System.out.println("Setup " + motorConfig.controllerName);
         return controller;
 

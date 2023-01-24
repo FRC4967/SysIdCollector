@@ -1,5 +1,7 @@
 package frc.sysid.motor;
 
+import java.util.List;
+
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
@@ -27,11 +29,11 @@ public class CTREMotorControllerAdapter extends BaseMotorControllerAdapter {
     }
 
     @Override
-    public void configure(MotorConfig config) {
+    public void configure(MotorConfig config, List<MotorControllerAdapter> otherMotors) {
         BaseMotorController ctreController = (BaseMotorController) controller;
         ctreController.configFactoryDefault();
         ctreController.setNeutralMode(NeutralMode.Brake);
-        super.configure(config);
+        super.configure(config, otherMotors);
     }
 
     @Override

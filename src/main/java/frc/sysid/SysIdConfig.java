@@ -11,11 +11,13 @@ import edu.wpi.first.wpilibj.Filesystem;
 public class SysIdConfig {
 
     public class MotorConfig {
+        public int motorIndex;
         public int port;
         public String controllerName;
         public boolean inverted;
 
-        public MotorConfig(int port, String controllerName, boolean inverted) {
+        public MotorConfig(int index, int port, String controllerName, boolean inverted) {
+            this.motorIndex = index;
             this.port = port;
             this.controllerName = controllerName;
             this.inverted = inverted;
@@ -123,13 +125,13 @@ public class SysIdConfig {
     public int period = 100;
 
     public MotorConfig getLeftMotorConfig(int index) {
-        return new MotorConfig(leftPorts[index],
+        return new MotorConfig(index, leftPorts[index],
                 controllerNames[index],
                 leftMotorsInverted[index]);
     }
 
     public MotorConfig getRightMotorConfig(int index) {
-        return new MotorConfig(rightPorts[index],
+        return new MotorConfig(index, rightPorts[index],
                 controllerNames[index],
                 rightMotorsInverted[index]);
     }

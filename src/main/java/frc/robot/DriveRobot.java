@@ -55,10 +55,14 @@ public class DriveRobot extends TimedRobot {
         MotorConfig leftMotorConfig = config.getLeftMotorConfig(i);
         MotorControllerAdapter leftMotorController = SysId.setupMotorController(leftMotorConfig);
         leftControllers.add(leftMotorController);
+        leftMotorController.configure(leftMotorConfig, leftControllers);
+
+
 
         MotorConfig rightMotorConfig = config.getRightMotorConfig(i);
         MotorControllerAdapter rightMotorController = SysId.setupMotorController(rightMotorConfig);
         rightControllers.add(rightMotorController);
+        rightMotorController.configure(rightMotorConfig, rightControllers);
 
       }
 
